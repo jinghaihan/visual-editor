@@ -1,0 +1,47 @@
+{
+  "name": "visual-editor",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vue-cli-service serve",
+    "build": "sh build.sh",
+    "build:dist": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "postinstall": "patch-package"
+  },
+  "dependencies": {
+    "@jiaminghi/data-view": "^2.10.0",
+    "animate.css": "^4.1.1",
+    "ant-design-vue": "1.7.8",
+    "axios": "^1.4.0",
+    "codemirror": "^5.41.0",
+    "dom-to-image": "^2.6.0",
+    "echarts": "^5.4.2",
+    "hotkeys-js": "^3.10.2",
+    "jquery": "^3.6.1",
+    "less": "^2.7.3",
+    "patch-package": "^6.4.7",
+    "swiper": "^5.4.5",
+    "uuid": "^9.0.0",
+    "vue": "^2.6.11",
+    "vue-awesome-swiper": "^4.1.1",
+    "vue-color": "^2.8.1",
+    "vue-draggable-resizable-gorkys": "^2.4.8",
+    "vue-easytable": "^2.27.1",
+    "vue-router": "^3.0.3",
+    "vue-ruler-tool": "^1.2.4",
+    "vue-virtual-scroller": "^1.1.2",
+    "vuedraggable": "^2.24.3"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/eslint-config-standard": "^4.0.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "less-loader": "^5.0.0",
+    "vue-template-compiler": "^2.6.11"
+  }
+}

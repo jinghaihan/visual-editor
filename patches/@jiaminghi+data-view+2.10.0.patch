@@ -1,0 +1,62 @@
+diff --git a/node_modules/@jiaminghi/data-view/lib/components/scrollBoard/src/main.vue b/node_modules/@jiaminghi/data-view/lib/components/scrollBoard/src/main.vue
+index ae745e7..2c4f350 100644
+--- a/node_modules/@jiaminghi/data-view/lib/components/scrollBoard/src/main.vue
++++ b/node_modules/@jiaminghi/data-view/lib/components/scrollBoard/src/main.vue
+@@ -12,6 +12,7 @@
+         `"
+         :align="aligns[i]"
+         v-html="headerItem"
++        @click="$emit('headerClick', i)"
+       />
+     </div>
+ 
+@@ -36,12 +37,12 @@
+           :key="`${ceil}${ri}${ci}`"
+           :style="`width: ${widths[ci]}px;`"
+           :align="aligns[ci]"
++          :title="getTitle(ceil, ci)"
+           v-html="ceil"
+           @click="emitEvent('click', ri, ci, row, ceil)"
+           @mouseenter="handleHover(true, ri, ci, row, ceil)"
+           @mouseleave="handleHover(false)"
+         />
+-
+       </div>
+     </div>
+   </div>
+@@ -269,7 +270,11 @@ export default {
+         data = data.map((row, i) => {
+           row = [...row]
+ 
+-          const indexTag = `<span class="index" style="background-color: ${headerBGC};">${i + 1}</span>`
++          const indexTag = `
++            <span class="index dv-scroll-board-header header-index-${i}" style="background-color: ${headerBGC};">
++              ${(i + 1).toString().length < 2 ? '0' + (i + 1) : i + 1}
++            </span>
++          `
+ 
+           row.unshift(indexTag)
+ 
+@@ -378,6 +383,8 @@ export default {
+ 
+       this.animationIndex = animationIndex
+       this.animationHandler = setTimeout(animation, waitTime - 300)
++
++      this.$emit('scroll', animationIndex)
+     },
+     stopAnimation () {
+       const { animationHandler, updater } = this
+@@ -410,6 +417,13 @@ export default {
+ 
+       if (typeof animationIndex === 'number') this.animationIndex = animationIndex
+       if (!animationHandler) animation(true)
++    },
++    getTitle(ceil, ci) {
++      if (!ci && this.config.index) {
++        return ''
++      } else {
++        return ceil
++      }
+     }
+   },
+   destroyed () {
